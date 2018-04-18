@@ -1,0 +1,279 @@
+"users" : [
+  {
+    "token": "ftuW6ZPc2ZgEuN9LRzQ2kunIs463",
+//    "id": "1",
+    "username": "spiderman",
+    "first_name": "peter",
+    "last_name": "parker",
+    "departments": [
+      {
+        "id": "0",
+        "name": "Avengers"
+      },
+      {
+        "id": "1",
+        "name": "friendly neighbourhood"
+      },
+      {
+        "id": "2",
+        "name": "school"
+      }
+    ],
+    "roles": [
+      {
+        "id": "0",
+        "name": "BP"
+      },
+      {
+        "id": "1",
+        "name": "BA"
+      }
+    ],
+    "number_of_likes": "2"
+  },
+  {
+    "token": "jwcF6ZPc2ZgEuN9LRzQ2kunIs463",
+//    "id": "2",
+    "username": "professor Xavier",
+    "first_name": "charles",
+    "last_name": "xavier",
+    "departments": [
+      {
+        "id": "2",
+        "name": "X-Men"
+      },
+      {
+        "id": "2",
+        "name": "school"
+      }
+    ],
+    "roles": [
+      {
+        "id": "0",
+        "name": "BP"
+      },
+      {
+        "id": "1",
+        "name": "BA"
+      }
+    ],
+    "number_of_likes": "1"
+  },
+  {
+    "token": "aaaB6ZPc2ZgEuN9LRzQ2kunIs463",
+//    "id": "3",
+    "username": "doctor strange",
+    "first_name": "steven",
+    "last_name": "stranger",
+    "departments": [
+      {
+        "id": "0",
+        "name": "Avengers"
+      },
+      {
+        "id": "3",
+        "name": "Sanctum sancturium"
+      }
+    ],
+    "roles": [
+      {
+        "id": "0",
+        "name": "BP"
+      },
+      {
+        "id": "1",
+        "name": "BA"
+      }
+    ],
+    "number_of_likes": "0"
+  },
+  {
+    "token": "bbbC6ZPc2ZgEuN9LRzQ2kunIs463",
+    "id": "4",
+    "username": "Storm",
+    "first_name": "ororo",
+    "last_name": "munroe",
+    "departments": [
+      {
+        "id": "0",
+        "name": "Avengers"
+      },
+      {
+        "id": "4",
+        "name": "X-Men"
+      },
+      {
+        "id": "2",
+        "name": "school"
+      },
+      {
+        "id": "5",
+        "name": "Lady liberators"
+      }
+    ],
+    "roles": [
+      {
+        "id": "0",
+        "name": "BP"
+      },
+      {
+        "id": "1",
+        "name": "BA"
+      }
+    ],
+    "number_of_likes": "2"
+  }
+]
+
+"departments": [
+  {
+    "id": "0",
+    "name": "Avengers",
+    "parent": null,
+    "users": [
+      {
+        "name": "peter parker",
+        "id": 1
+      },
+      {
+        "name": "steven strange",
+        "id": 3
+      },
+      {
+        "name": "ororo munroe",
+        "id": 4
+      }
+    ]
+  },
+  {
+    "id": "1",
+    "name": "friendly neighbourhood",
+    "parent": null,
+    "users": [
+      {
+        "name": "peter parker",
+        "id": 1
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "school",
+    "parent": null,
+    "users": [
+      {
+        "name": "peter parker",
+        "id": 1
+      },
+      {
+        "name": "charles xavier",
+        "id": 2
+      },
+      {
+        "name": "ororo munroe",
+        "id": 4
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Sanctum sancturium",
+    "parent": null,
+    "users": [
+      {
+        "name": "steven strange",
+        "id": 3
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "X-Men",
+    "users": [
+      {
+        "name": "peter parker",
+        "id": 1
+      },
+      {
+        "name": "charles xavier",
+        "id": 2
+      },
+      {
+        "name": "ororo munroe",
+        "id": 4
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Lady liberators",
+    "users": [
+      {
+        "name": "ororo munroe",
+        "id": 4
+      }
+    ]
+  }
+],
+
+"likes": [
+  { "id": 0,
+    "to": {
+      "name": "peter parker",
+      "id": 1
+    },
+    "from": {
+      "name": "steven strange",
+      "id": 3
+    },
+    "rewardedOn": "2018-04-16 17:07:12"
+  },
+  {
+    "id": 1,
+    "to": {
+      "name": "peter parker",
+      "id": 1
+    },
+    "from": {
+      "name": "charles xavier",
+      "id": 2
+    },
+    "rewardedOn": "2018-03-16 13:07:12"
+  },
+  {
+    "id": 2,
+    "to": {
+      "name": "charles xavier",
+      "id": 3
+    },
+    "from":{
+      "name": "peter parker",
+      "id": 1
+    }, 
+    "rewardedOn": "2018-04-15 15:05:15"
+  },
+  {
+    "id": 3,
+    "to": {
+      "name": "ororo munroe",
+      "id": 4
+    },
+    "from": {
+      "name": "steven strange",
+      "id": 3
+    },
+    "rewardedOn": "2018-02-12 12:02:12"
+  },
+  {
+    "id": 4,
+    "to": {
+      "name": "ororo munroe",
+      "id": 4
+    },
+    "from": {
+      "name": "peter parker",
+      "id": 1
+    },
+    "rewardedOn": "2018-01-12 11:02:12"
+  },
+]
