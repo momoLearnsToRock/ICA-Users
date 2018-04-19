@@ -52,7 +52,7 @@ const routes = ({ connection, tableName, disablePost, disablePut, disablePatch, 
   //  a middleware to get the user based on its token, this will be used in the so called "byId" calls 
   router.use('/:id', (req, res, next) => {
     if (req.body.id && req.body.id !== req.params.id) {
-      res.status(400).send(new ResponseDTO('id can not be passed as part od request body.'));
+      res.status(400).send(new ResponseDTO('Wrong id is passed as part o request body.'));
     }
     else {
       r.table(tableName).get(req.params.id).run(connection, (err, result) => {

@@ -3,6 +3,7 @@ module.exports = {
     "rules": {
         "linebreak-style": 0,
         "max-len": 0,
-        "no-extra-boolean-cast": 1
+        "no-extra-boolean-cast": 1,
+        "prefer-destructuring": ["error", {"object": true, "array": false}]
     }
 };
