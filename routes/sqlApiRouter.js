@@ -17,20 +17,33 @@ const routes = ({ connection, disablePost, disablePut, disablePatch, disableDele
   const router = express.Router();
   router.route('/')
     .get((req, res) => {
-      (async function query() {
-        let result = null;
-        try {
-          await sql.connect(config);
-          const requ = new sql.Request();
-          result = await requ.query(`select * from ${tbl.tableName}`);// where id = ${value}`
-          debug(result);
-          sql.close();
-          res.send(result);
-        } catch (err) {
-          debug(err);
-          res.status(400).send(new ResponseDTO('error', result));
-        }
-      }());
+      // (async function query() {
+      let result = new ResponseDTO('Error');
+      try {
+        tbl.getAll().then((rslt) => {
+          res.send(rslt);
+        }, (rslt) => {
+          res.status(405).send(rslt);
+        });
+      } catch (err) {
+        res.status(405).send(result);
+      }
+      // }());
+
+      // (async function query() {
+      //   let result = null;
+      //   try {
+      //     await sql.connect(config);
+      //     const requ = new sql.Request();
+      //     result = await requ.query(`select * from ${tbl.tableName}`);// where id = ${value}`
+      //     debug(result);
+      //     sql.close();
+      //     res.send(result);
+      //   } catch (err) {
+      //     debug(err);
+      //     res.status(400).send(new ResponseDTO('error', result));
+      //   }
+      // }());
     })
     .post((req, res) => {
       if (!!disablePost) {
@@ -78,8 +91,8 @@ const routes = ({ connection, disablePost, disablePut, disablePatch, disableDele
       (async function query() {
         let result = null;
         try {
-          await sql.connect(config);
-          const requ = new sql.Request();
+          // await sql.connect(config);
+          const requ = new sql.Request(tbl.connectionPool);
           debug('select by id: ', `select * from ${tbl.tableName} where Id= @id`);
           requ.input('id', req.params.id);
           result = await requ.query(`select * from ${tbl.tableName} where Id= @id`);
