@@ -105,6 +105,111 @@ const SQLTable = class extends Table {
       return new ResponseDTO('error', result);
     }
   }
+
+  getAllPromise() {
+    return new Promise((resolve, reject) => {
+      let result = null;
+      try {
+        const thisTableName = this.tableName;
+        const pool = new sql.ConnectionPool(config);
+        const conny = pool.connect().then((conny) => {
+          const requ = new sql.Request(conny);
+          result = requ.query(`select * from ${thisTableName}`).then((result) => {
+            debug(result);
+            conny.close();
+            resolve(new ResponseDTO('', result));
+          }, (err) => {
+            debug(err);
+          });
+        });
+      } catch (err) {
+        debug(err);
+        // sql.close();
+        reject(new ResponseDTO('error', result));
+      }
+    });
+  }
+
+  getAllPromisePool() {
+    return new Promise((resolve, reject) => {
+      let result = null;
+      try {
+        const thisTableName = this.tableName;
+        const pool = new sql.ConnectionPool(config, (err) => {
+          if (err) {
+            debug(err);
+          }
+          // const conny = pool.connect().then((conny) => {
+          const requ = new sql.Request(pool);
+          result = requ.query(`select * from ${thisTableName}`).then((result) => {
+            debug(result);
+            resolve(new ResponseDTO('', result));
+          }, (err) => {
+            debug(err);
+          });
+          // });
+        });
+      } catch (err) {
+        debug(err);
+        // sql.close();
+        reject(new ResponseDTO('error', result));
+      }
+    });
+  }
+
+  getAllPromiseSharedPool() {
+    return new Promise((resolve, reject) => {
+      let result = null;
+      try {
+        const thisTableName = this.tableName;
+        // const pool = new sql.ConnectionPool(config, (err) => {
+        //   if (err) {
+        //     debug(err);
+        //   }
+
+        // const conny = pool.connect().then((conny) => {
+        const requ = new sql.Request(this.connectionPool);
+        result = requ.query(`select * from ${thisTableName}`).then((result) => {
+          debug(result);
+          resolve(new ResponseDTO('', result));
+        }, (err) => {
+          debug(err);
+        });
+        // });
+        // });
+      } catch (err) {
+        debug(err);
+        // sql.close();
+        reject(new ResponseDTO('error', result));
+      }
+    });
+  }
+
+  async getAllPromiseSharedPoolAsync() {
+    // return new Promise((resolve, reject) => {
+    let result = null;
+    try {
+      const thisTableName = this.tableName;
+      // const pool = new sql.ConnectionPool(config, (err) => {
+      //   if (err) {
+      //     debug(err);
+      //   }
+
+      // const conny = pool.connect().then((conny) => {
+      const requ = new sql.Request(this.connectionPool);
+      result = await requ.query(`select * from ${thisTableName}`);
+      debug(result);
+      return (new ResponseDTO('', result));
+      // });
+      // });
+    } catch (err) {
+      debug(err);
+      // sql.close();
+      return (new ResponseDTO('error', result));
+    }
+    // });
+  }
+
 };
 
 module.exports = {
